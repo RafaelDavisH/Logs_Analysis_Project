@@ -92,7 +92,7 @@ create view totalviews as
 
 #### Errorsdate
 
-**Errordate** counts all errors per day and groups them by date and order by errors most to least errors.
+**Errorsdate** counts all errors per day and groups them by date and order by errors most to least errors.
 ```
 create view errorsdate as
    select log.time::date as date, log.status, count(*) as errors
