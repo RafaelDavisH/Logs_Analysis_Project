@@ -3,6 +3,7 @@
 import psycopg2
 from pprint import pprint
 
+
 def execute_query(query):
     """execute_query takes an SQL query as a parameter. Executes the query
     and returns the results as a list of tuples.
@@ -73,7 +74,7 @@ def lead_errors():
     for list, row in enumerate(rows, 1):
         date = row[0]
         percent = row[1]
-        print format(list, '<2'), date, ' - ', round(percent,2), '% Errors'
+        print format(list, '<2'), date, ' - ', round(percent, 2), '% Errors'
     print
 
 
@@ -81,6 +82,7 @@ def assignment():
     top_articles()
     top_articles_authors()
     lead_errors()
+
 
 if __name__ == '__main__':
     assignment()
