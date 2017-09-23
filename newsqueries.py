@@ -73,7 +73,7 @@ def lead_errors():
     for list, row in enumerate(rows, 1):
         date = row[0]
         percent = row[1]
-        print format(list, '<2'), date, ' - ', round(percent, 2), '% Errors'
+        print format(list, '<2'), date, ' - ', round(percent,2), '% Errors'
     print
 
 
