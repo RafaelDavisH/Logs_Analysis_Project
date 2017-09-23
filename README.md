@@ -22,22 +22,25 @@ like. **Newsqueries** will print out reports in plain text based on the data in 
 4. [`create_views.sql`](https://github.com/RafaelDavisH/Logs_Analysis_Project/raw/master/create_views.sql)
 5. [`newsqueries.py`](https://github.com/RafaelDavisH/Logs_Analysis_Project/raw/master/newsqueries.py)
 
-## [Virtual Machine][1]
+*All the procedures given below to install the VirtualBox, Vagrant and Troubleshooting are from*
+[Udacity's 'Intro to Programming Nanodegree Program.'](https://classroom.udacity.com/nanodegrees/nd000/parts/b910112d-b5c0-4bfe-adca-6425b137ed12/modules/a3a0987f-fc76-4d14-a759-b2652d06ab2b/lessons/303a271d-bc69-4eba-ae38-e9875f841604/concepts/14c72fe3-e3fe-4959-9c4b-467cf5b7c3a0) Images by [Udacity](http//:udacity.com).*
+
+## Virtual Machine
 
 You'll need database software (provided by a Linux virtual machine) and the data to analyze. The VM is a Linux server system that runs on top of your own computer.  We're using tools called [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) to install and manage the VM. You'll need to install these to run `newsqueries.py`
 
-## [Use a Terminal][1]
+## Use a Terminal
 
 You'll need to be using a Unix-style terminal on your computer. If you are using a **Mac or Linux** system, your regular terminal program will do just fine.  On **Windows**, we recommend using the **Git Bash** terminal that comes with the Git software.
 
-## [Install VirtualBox][1]
+## Install VirtualBox
 
 **VirtualBox** is the software that actually runs the virtual machine. Install the *platform package* for your operation system - [click Here](https://www.virtualbox.org/wiki/Downloads).
 You don't need the extension pack or the SDK. You do not need to launch **VirtualBox** after installing it; Vagrant will do that.
 
 **Ubuntu users:** If you are running Ubuntu 14.94, install VirtualBox using the Ubuntu Software Center instead. Due to a reported bug, installing VirtualBox from the site may uninstall other software you need.
 
-## [Install Vagrant][1]
+## Install Vagrant
 
 **Vagrant** is the software that configures the VM and lets you share files between your host computer and the VM's filesystem. [Download it from vagrantup.com](https://www.vagrantup.com/). Install the version for your operating system.
 
@@ -50,7 +53,7 @@ $
 ```
 *if Vagrant is successfully installed, you will be able to run `vagrant --version` in your terminal to see the version number. The shell prompt in your terminal may differ. Here, the `$` sign is the shell prompt.*
 
-## [Download the VM configuration][1]
+## Download the VM configuration
 
 There are couple of different ways you can download the VM configuration.
 
@@ -64,7 +67,7 @@ Either way, you will end up with a new directory containing the VM files. Change
 
 *Navigating to the FSND-Virtual-Machine directory and listing the files in it. This picture was taken on a Mac, but the commands will look the same on Git Bash on Windows.*
 
-## [Start The Virtual Machine][1]
+## Start The Virtual Machine
 
 From your terminal, the **vagrant** subdirectory, run the command `vagrant up`. This will cause Vagrant to download the Linux operating system and install it. This may take quite a while (many minutes) depending on how fast your internet connection is.
 
@@ -78,11 +81,11 @@ When `vagrant up` is finished running, you will get your shell prompt back. At t
 
 *Logging into the Linux VM with `vagrant ssh`.*
 
-### [Wow, That Worked!][1]
+### Wow, That Worked!
 
 If you've gotten logged into your Linux VM, congratulations. If not, take a look at the **Troubleshooting** section below.
 
-### [The Files][1]
+### The Files
 
 Inside the VM, change directory to `/vagrant` and look around with `ls`.
 
@@ -90,7 +93,7 @@ The files you see here are the same as the ones in the `vagrant` subdirectory on
 
 Files in the VM's `/vagrant` directory are shared with the `vagrant` folder on your computer. But other data inside the VM is not. For instance, the PostgreSQL database itself lives only inside the VM.
 
-### [Running The Database][1]
+### Running The Database
 
 The PostgreSQL database server will automatically be started inside the VM. You can use the `psql` command-line tool to access it and run SQL statements:
 
@@ -98,7 +101,7 @@ The PostgreSQL database server will automatically be started inside the VM. You 
 
 *Running psql, the PostgreSQL command interface, inside the VM.*
 
-### [Logging Out And In][1]
+### `Logging Out And In`
 
 If you type `exit` (or `Ctrl-D`) at the shell prompt inside the VM, you will be logged out, and put back into your host computer's shell. To log back in, make sure you're in the same directory and type `vagrant ssh` again.
 
@@ -185,14 +188,14 @@ CREATE VIEW requestday AS
 
 ```sql
 CREATE VIEW leaderrors AS
-    SELECT to_char(errorspercent.date, 'MON DD, YYYY') AS date,
+    SELECT to_char(errorspercent.date, 'FMMonth FMDDth, YYYY') AS date,
     (errorsday.errors / requestday.requests::float * 100.0) AS percentage
     FROM errorsday, requestday
     WHERE errorsday.date = requestday.date
     ORDER BY percentage DESC;
 ```
 
-## [Troubleshooting][1]
+## Troubleshooting
 
 #### I'm not sure if it worked.
 
@@ -219,6 +222,3 @@ If you're getting a specific textual error message, try looking it up on your fa
 #### If all else fails, try an older version.
 
 Udacity mentors have noticed that some newer versions of Vagrant don't work on all operating systems. Version 1.9.2 is reported to be stabler on some systems, and version 1.9.1 is the supported version on Ubuntu 17.04. You can download older versions of Vagrant from [the Vagrant releases index](https://releases.hashicorp.com/vagrant/).
-
-*All the procedures given above to install the VirtualBox, Vagrant and Troubleshooting are from Udacity's 'Intro to Programming Nanodegree Program'*
-[1]: https://classroom.udacity.com/nanodegrees/nd000/parts/b910112d-b5c0-4bfe-adca-6425b137ed12/modules/a3a0987f-fc76-4d14-a759-b2652d06ab2b/lessons/303a271d-bc69-4eba-ae38-e9875f841604/concepts/14c72fe3-e3fe-4959-9c4b-467cf5b7c3a0
