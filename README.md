@@ -19,7 +19,7 @@ like. **Newsqueries** will print out reports in plain text based on the data in 
 1. [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. [Vagrant](https://www.vagrantup.com/)
 3. [`newsdata.sql`](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
-4. `create_views.sql`
+4. [`create_views.sql`](https://github.com/RafaelDavisH/Logs_Analysis_Project/raw/master/create_views.sql)
 5. [`newsqueries.py`](https://github.com/RafaelDavisH/Logs_Analysis_Project/raw/master/newsqueries.py)
 
 ## [Virtual Machine][1]
