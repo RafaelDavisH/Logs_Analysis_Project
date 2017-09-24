@@ -17,10 +17,12 @@ def execute_query(query):
         db = psycopg2.connect("dbname=news")
         c = db.cursor()
         c.execute(query)
-        return c.fetchall()
+        results = c.fetchall()
         db.close()
+        return results
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
+    sys.exit(1)
 
 
 def top_articles():
